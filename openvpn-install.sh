@@ -414,17 +414,20 @@ WantedBy=multi-user.target" >> /etc/systemd/system/openvpn-iptables.service
 	# client-common.txt is created so we have a template to add further users later
 	echo "client
 dev tun
-proto $protocol
-remote $ip $port
 resolv-retry infinite
 nobind
 persist-key
 persist-tun
 remote-cert-tls server
-auth SHA512
-cipher AES-256-CBC
+verify-x509-name $SERVER_NAME name
+auth $HMAC_ALG
+auth-nocache
+cipher $CIPHER
+tls-client
+tls-version-min 1.2
+tls-cipher $CC_CIPHER
 ignore-unknown-option block-outside-dns
-block-outside-dns
+setenv opt block-outside-dns # Prevent Windows 10 DNS leak
 verb 3" > /etc/openvpn/server/client-common.txt
 	# Enable and start the OpenVPN service
 	systemctl enable --now openvpn-server@server.service
