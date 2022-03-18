@@ -425,6 +425,12 @@ auth SHA512
 cipher AES-256-CBC
 ignore-unknown-option block-outside-dns
 block-outside-dns
+verify-x509-name $SERVER_NAME nam
+auth $HMAC_ALG
+auth-nocache
+cipher $CIPHER
+tls-client
+tls-version-min 1.2
 verb 3" > /etc/openvpn/server/client-common.txt
 	# Enable and start the OpenVPN service
 	systemctl enable --now openvpn-server@server.service
