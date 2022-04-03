@@ -275,7 +275,7 @@ dh dh.pem
 auth SHA512
 tls-crypt tc.key
 topology subnet
-server 10.8.0.0 255.255.255.0" > /etc/openvpn/server/server.conf
+server 10.8.0.0 255.255.0.0" > /etc/openvpn/server/server.conf
 	# IPv6
 	if [[ -z "$ip6" ]]; then
 		echo 'push "redirect-gateway def1 bypass-dhcp"' >> /etc/openvpn/server/server.conf
@@ -424,11 +424,9 @@ auth SHA512
 cipher AES-256-CBC
 ignore-unknown-option block-outside-dns
 block-outside-dns
-verify-x509-name $SERVER_NAME nam
-auth $HMAC_ALG
+verify-x509-name
 auth-nocache
-cipher $CIPHER
-tls-client
+tls-cipher TLS-ECDHE-ECDSA-WITH-AES-128-GCM-SHA256
 tls-version-min 1.2
 verb 3" > /etc/openvpn/server/client-common.txt
 	# Enable and start the OpenVPN service
