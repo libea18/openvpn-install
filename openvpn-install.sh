@@ -427,6 +427,7 @@ block-outside-dns
 auth-nocache
 verify-x509-name 5.161.95.251 name
 tls-version-min 1.2
+tls-cipher
 verb 3" > /etc/openvpn/server/client-common.txt
 	# Enable and start the OpenVPN service
 	systemctl enable --now openvpn-server@server.service
