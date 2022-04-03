@@ -12,7 +12,6 @@ if readlink /proc/$$/exe | grep -q "dash"; then
 fi
 
 # Discard stdin. Needed when running from an one-liner which includes a newline
-read -N 999999 -t 0.001
 
 # Detect OpenVZ 6
 if [[ $(uname -r | cut -d "." -f 1) -eq 2 ]]; then
