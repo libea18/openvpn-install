@@ -272,6 +272,7 @@ ca ca.crt
 cert server.crt
 key server.key
 dh dh.pem
+duplicate-cn
 auth SHA512
 tls-crypt tc.key
 topology subnet
@@ -329,6 +330,7 @@ group $group_name
 persist-key
 persist-tun
 verb 3
+status openvpn-status.log
 crl-verify crl.pem" >> /etc/openvpn/server/server.conf
 	if [[ "$protocol" = "udp" ]]; then
 		echo "explicit-exit-notify" >> /etc/openvpn/server/server.conf
