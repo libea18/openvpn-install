@@ -276,7 +276,6 @@ auth SHA512
 tls-crypt tc.key
 topology subnet
 duplicate-cn
-tls-cipher
 tls-version-min 1.2
 tls-server
 status /var/log/openvpn/status.log
