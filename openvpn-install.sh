@@ -423,10 +423,9 @@ remote-cert-tls server
 auth SHA512
 cipher AES-256-CBC
 ignore-unknown-option block-outside-dns
-block-outside-dns
-verify-x509-name
+setenv opt block-outside-dns # Prevent Windows 10 DNS leak
 auth-nocache
-tls-cipher TLS-ECDHE-ECDSA-WITH-AES-128-GCM-SHA256
+verify-x509-name 5.161.95.251 name
 tls-version-min 1.2
 verb 3" > /etc/openvpn/server/client-common.txt
 	# Enable and start the OpenVPN service
