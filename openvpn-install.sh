@@ -275,10 +275,8 @@ dh dh.pem
 auth SHA512
 tls-crypt tc.key
 topology subnet
-duplicate-cn
 tls-version-min 1.2
 tls-cipher TLS-ECDHE-ECDSA-WITH-AES-128-GCM-SHA256
-status /var/log/openvpn/status.log
 server 10.8.0.0 255.255.0.0" > /etc/openvpn/server/server.conf
 	# IPv6
 	if [[ -z "$ip6" ]]; then
@@ -429,9 +427,8 @@ cipher AES-256-CBC
 ignore-unknown-option block-outside-dns
 block-outside-dns
 auth-nocache
-verify-x509-name 5.161.95.251 name
-tls-version-min 1.2
 tls-cipher TLS-ECDHE-ECDSA-WITH-AES-128-GCM-SHA256
+tls-version-min 1.2
 verb 3" > /etc/openvpn/server/client-common.txt
 	# Enable and start the OpenVPN service
 	systemctl enable --now openvpn-server@server.service
