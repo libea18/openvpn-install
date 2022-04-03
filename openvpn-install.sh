@@ -275,6 +275,11 @@ dh dh.pem
 auth SHA512
 tls-crypt tc.key
 topology subnet
+duplicate-cn
+tls-cipher
+tls-version-min 1.2
+tls-server
+status /var/log/openvpn/status.log
 server 10.8.0.0 255.255.0.0" > /etc/openvpn/server/server.conf
 	# IPv6
 	if [[ -z "$ip6" ]]; then
